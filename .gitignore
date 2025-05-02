@@ -1,0 +1,18 @@
+#binaries
+
+*.exe
+*.dll
+*.so
+*.dylb
+
+#teste binary
+
+*.test
+
+#covare
+
+*.out
+
+Db folder
+
+db/
