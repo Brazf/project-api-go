@@ -1,9 +1,19 @@
 package handler
 
-import "github.com/gin-gonic/gin"
+import (
+	"net/http"
 
-func ListOpeningHeadler(ctx *gin.Context) {
-	ctx.JSON(200, gin.H{
-		"msg": "GET Openings",
-	})
+	"github.com/Brazf/project-api-go/schemas"
+	"github.com/gin-gonic/gin"
+)
+
+func ListOpeningHandler(ctx *gin.Context) {
+	openings := schemas.Opening{}
+
+	if err := db.Find(&openings).Error; err != nil {
+		sendError(ctx, http.StatusInternalServerError, "error listing openings")
+		return
+	}
+
+	sendSuccess(ctx, "list-openings", openings)
 }

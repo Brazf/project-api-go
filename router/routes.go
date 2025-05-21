@@ -12,15 +12,15 @@ func initializeRoutes(router *gin.Engine) {
 
 	v1 := router.Group("/api/v1")
 	{
-		v1.GET("/opening", handler.ShowOpeningHeadler)
+		v1.GET("/opening", handler.ShowOpeningHandler)
 
-		v1.POST("/opening", handler.CreateOpeningHeadler)
+		v1.POST("/opening", handler.CreateOpeningHandler)
 
-		v1.DELETE("/opening", handler.DeleteOpeningHeadler)
+		v1.DELETE("/opening", handler.DeleteOpeningHandler)
 
-		v1.PUT("/opening", handler.UpdateOpeningHeadler)
+		v1.PUT("/opening", handler.UpdateOpeningHandler)
 
-		v1.GET("/openings", handler.ListOpeningHeadler)
+		v1.GET("/openings", handler.ListOpeningHandler)
 	}
 
 }

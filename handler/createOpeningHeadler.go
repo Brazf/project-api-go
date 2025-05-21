@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func CreateOpeningHeadler(ctx *gin.Context) {
+func CreateOpeningHandler(ctx *gin.Context) {
 	request := CreateOpeningRequest{}
 
 	ctx.BindJSON(&request)
