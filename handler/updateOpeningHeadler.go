@@ -1,9 +1,13 @@
 package handler
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+)
 
 func UpdateOpeningHandler(ctx *gin.Context) {
-	ctx.JSON(200, gin.H{
-		"msg": "PUT Opening",
-	})
+
+	request := CreateOpeningRequest{}
+
+	ctx.BindJSON(&request)
+
 }
