@@ -1,16 +1,21 @@
 package router
 
 import (
+	docs "github.com/Brazf/project-api-go/docs"
 	"github.com/Brazf/project-api-go/handler"
 	"github.com/gin-gonic/gin"
+	swaggerfiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func initializeRoutes(router *gin.Engine) {
 
 	// InitializeHandler
 	handler.InitializeHandler()
+	basePath := "api/v1"
+	docs.SwaggerInfo.BasePath = basePath
 
-	v1 := router.Group("/api/v1")
+	v1 := router.Group(basePath)
 	{
 		v1.GET("/opening", handler.ShowOpeningHandler)
 
@@ -22,5 +27,7 @@ func initializeRoutes(router *gin.Engine) {
 
 		v1.GET("/openings", handler.ListOpeningHandler)
 	}
+
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 
 }
